@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkhexVueWeek6"]=self["webpackChunkhexVueWeek6"]||[]).push([[54],{54:function(e,n,t){t.r(n),t.d(n,{default:function(){return k}});var r=t(3396);const c={class:"container"},u=(0,r._)("h1",{class:"text-center py-3"},"後台產品列表",-1),s=[u];function a(e,n){return(0,r.wg)(),(0,r.iD)("div",c,s)}var i=t(89);const f={},h=(0,i.Z)(f,[["render",a]]);var k=h}}]);
+//# sourceMappingURL=54.ec4f2762.js.map
