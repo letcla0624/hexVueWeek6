@@ -5,69 +5,71 @@
     <div class="row g-5 g-lg-3">
       <div class="col-lg-6">
         <h2 class="h3 text-center mb-5">購物清單</h2>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">名稱</th>
-              <th scope="col">單價</th>
-              <th scope="col">數量/單位</th>
-              <th scope="col" class="text-end">價格</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in cart.carts" :key="item.id">
-              <th scope="row">
-                <button
-                  type="button"
-                  class="btn btn-outline-danger btn-sm"
-                  @click="deleteItem(item.id)"
-                >
-                  <div
-                    v-if="isLoading === item.id"
-                    class="spinner-border spinner-border-sm"
-                    role="status"
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">名稱</th>
+                <th scope="col">單價</th>
+                <th scope="col" style="min-width: 90px">數量/單位</th>
+                <th scope="col" class="text-end">價格</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in cart.carts" :key="item.id">
+                <th scope="row">
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger btn-sm"
+                    @click="deleteItem(item.id)"
                   >
-                    <span class="visually-hidden">Loading...</span>
-                  </div>
-                  <i v-else class="bi bi-trash-fill"></i>
-                </button>
-              </th>
-              <td>{{ item.product.title }}</td>
-              <td>$NTD {{ item.product.price }}</td>
-              <td>
-                <div class="input-group input-group-sm">
-                  <select
-                    class="form-select form-select-sm"
-                    v-model="item.qty"
-                    @change="updateCart(item)"
-                    :disabled="isLoading === item.id"
-                  >
-                    <option
-                      v-for="num in 10"
-                      :key="`${num}${item.product_id}`"
-                      :value="num"
+                    <div
+                      v-if="isLoading === item.id"
+                      class="spinner-border spinner-border-sm"
+                      role="status"
                     >
-                      {{ num }}
-                    </option>
-                  </select>
-                  <span>／{{ item.product.unit }}</span>
-                </div>
-              </td>
-              <td class="text-end">$NTD {{ item.total }}</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="4" class="text-end">總價</td>
-              <td
-                class="fw-bold text-danger d-flex justify-content-end align-items-center"
-              >
-                $NTD<b class="fs-4 ms-1">{{ cart.total }}</b>
-              </td>
-            </tr>
-          </tfoot>
-        </table>
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <i v-else class="bi bi-trash-fill"></i>
+                  </button>
+                </th>
+                <td>{{ item.product.title }}</td>
+                <td>$NTD {{ item.product.price }}</td>
+                <td>
+                  <div class="input-group input-group-sm">
+                    <select
+                      class="form-select form-select-sm"
+                      v-model="item.qty"
+                      @change="updateCart(item)"
+                      :disabled="isLoading === item.id"
+                    >
+                      <option
+                        v-for="num in 10"
+                        :key="`${num}${item.product_id}`"
+                        :value="num"
+                      >
+                        {{ num }}
+                      </option>
+                    </select>
+                    <span>／{{ item.product.unit }}</span>
+                  </div>
+                </td>
+                <td class="text-end">$NTD {{ item.total }}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4" class="text-end">總價</td>
+                <td
+                  class="fw-bold text-danger d-flex justify-content-end align-items-center"
+                >
+                  $NTD<b class="fs-4 ms-1">{{ cart.total }}</b>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
         <div class="d-grid gap-3 d-sm-flex justify-content-sm-end mt-3">
           <router-link to="/products" class="btn btn-outline-dark"
             ><i class="bi bi-cart-fill me-1"></i>繼續購物</router-link
