@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1 class="text-center py-3">產品內頁</h1>
-    <BreadComponent></BreadComponent>
+    <BreadComponent :prod-title="prod.title"></BreadComponent>
     <div class="row row-cols-1 row-cols-md-2 g-3">
       <div class="col">
         <img
@@ -94,6 +94,7 @@ export default {
       let loader = this.$loading.show();
       // 取得單一產品的路由 id
       const id = this.$route.params.id;
+
       this.$http
         .get(
           `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/product/${id}`

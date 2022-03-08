@@ -9,6 +9,7 @@
       >
         {{ item.name }}
       </li>
+      <li v-if="prodTitle"><b class="px-2">></b>{{ prodTitle }}</li>
     </ol>
   </nav>
 </template>
@@ -20,6 +21,7 @@ export default {
       breadcrumbList: [],
     };
   },
+  props: ["prodTitle"],
   watch: {
     $route() {
       this.nowBreadcrumb();

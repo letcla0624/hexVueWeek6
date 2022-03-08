@@ -34,6 +34,7 @@ const routes = [
       {
         path: "prod/:id",
         component: () => import("@/views/Front/ProdView.vue"),
+        props: true,
         meta: {
           breadcrumb: [
             {
@@ -43,9 +44,6 @@ const routes = [
             {
               name: "產品頁",
               link: "/products",
-            },
-            {
-              name: "產品內頁",
             },
           ],
         },
